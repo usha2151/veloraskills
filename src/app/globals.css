@@ -999,7 +999,63 @@ textarea {
   gap: 18px;
 }
 
+.section--dashboard-showcase {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(100deg, rgba(10, 42, 107, 0.96) 0%, rgba(22, 61, 140, 0.82) 46%, rgba(17, 24, 39, 0.62) 74%, rgba(249, 168, 37, 0.3) 100%),
+    url("/internship-hero.png") center center / cover no-repeat;
+}
+
+.section--dashboard-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 78px 78px;
+  opacity: 0.22;
+}
+
+.section--dashboard-showcase::after {
+  content: "";
+  position: absolute;
+  right: -110px;
+  bottom: -160px;
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.28), transparent 68%);
+  animation: dashboardGlow 6s ease-in-out infinite;
+}
+
+.section--dashboard-showcase .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section--dashboard-showcase .section-heading h2 {
+  color: #ffffff;
+  text-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+}
+
+.section--dashboard-showcase .section-heading p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.section--dashboard-showcase .eyebrow {
+  color: #ffc107;
+}
+
+.section--dashboard-showcase .dashboard-preview {
+  animation: floatPanel 5.8s ease-in-out infinite;
+}
+
 .dashboard-preview article {
+  position: relative;
+  overflow: hidden;
   border-radius: 8px;
   padding: 26px;
   background:
@@ -1007,6 +1063,26 @@ textarea {
     var(--dark);
   color: #ffffff;
   box-shadow: 0 22px 60px rgba(10, 42, 107, 0.22);
+}
+
+.section--dashboard-showcase .dashboard-preview article {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  padding: 30px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)),
+    rgba(10, 42, 107, 0.48);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.section--dashboard-showcase .dashboard-preview article::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.16) 42%, transparent 66%);
+  transform: translateX(-120%);
+  animation: scanLight 5.5s ease-in-out infinite;
 }
 
 .dashboard-preview h3 {
@@ -1031,6 +1107,21 @@ textarea {
   padding: 9px 12px;
   color: rgba(255, 255, 255, 0.8);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+}
+
+.section--dashboard-showcase .chip-list span {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.88);
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.section--dashboard-showcase .chip-list span:hover {
+  color: #111827;
+  background: #ffc107;
+  transform: translateY(-2px);
 }
 
 .form-panel {
@@ -2377,6 +2468,19 @@ td {
   72%,
   100% {
     transform: translateX(120%);
+  }
+}
+
+@keyframes dashboardGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
   }
 }
 

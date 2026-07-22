@@ -124,7 +124,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" id="dashboard">
+        <section className="section section--dashboard-showcase" id="dashboard">
           <div className="container dashboard-layout">
             <div className="section-heading section-heading--left">
               <p className="eyebrow">Dashboards</p>
