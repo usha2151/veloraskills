@@ -1,0 +1,358 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Header } from "@/components/common/Header";
+import { Footer } from "@/components/common/Footer";
+import { ApplyForm } from "@/components/forms/ApplyForm";
+import { VerifyForm } from "@/components/forms/VerifyForm";
+import {
+  careerTools,
+  dashboardHighlights,
+  faqs,
+  journeySteps,
+  programs,
+  resources,
+  services,
+  stats,
+  testimonials,
+} from "@/data/site";
+
+export default function Home() {
+  const previewPrograms = programs.slice(0, 6);
+
+  return (
+    <>
+      <Header />
+      <main>
+        <section className="hero" id="home">
+          <div className="hero__media" aria-hidden="true">
+            <Image
+              src="/internship-hero.png"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="hero__image"
+            />
+          </div>
+          <div className="container hero__content">
+            <div className="hero__copy">
+              <p className="eyebrow">Global virtual internships</p>
+              <h1>Build skills on a real tech internship operating system.</h1>
+              <p className="hero__lead">
+                VeloraSkills combines project tracks, admin workflows, AI career
+                tools, certificate verification, and student dashboards into one
+                modern internship platform.
+              </p>
+              <div className="hero__actions">
+                <a className="button button--primary" href="#apply">
+                  Apply Now
+                </a>
+                <a className="button button--light" href="#verify">
+                  Verify Certificate
+                </a>
+              </div>
+              <div className="hero__badges" aria-label="Platform highlights">
+                <span>Next.js platform</span>
+                <span>MySQL backend</span>
+                <span>QR certificates</span>
+              </div>
+            </div>
+            <div className="hero-tech-panel" aria-label="VeloraSkills platform preview">
+              <div className="hero-tech-panel__top">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="code-lines">
+                <span>const intern = assignTrack(&quot;Web Development&quot;);</span>
+                <span>await review.tasks(progress.status);</span>
+                <span>certificate.verify(qrToken, intern.id);</span>
+              </div>
+              <div className="signal-grid">
+                <strong>68%</strong>
+                <span>task progress</span>
+                <strong>48h</strong>
+                <span>mentor review</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--stats" aria-label="Live platform stats">
+          <div className="container stats-grid">
+            {stats.map((item) => (
+              <article className="stat" key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section section--tech" id="services">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">Services</p>
+              <h2>Built like a technical product, not a static brochure.</h2>
+              <p>
+                VeloraSkills connects learning, operations, verification, and career
+                preparation through clear dashboards and backend-ready workflows.
+              </p>
+            </div>
+            <div className="service-grid">
+              {services.map((service) => (
+                <article className="service-card" key={service.title}>
+                  <h3>{service.title}</h3>
+                  <p>{service.copy}</p>
+                  <div className="chip-list chip-list--light">
+                    {service.points.map((point) => (
+                      <span key={point}>{point}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="programs">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">Internship programs</p>
+              <h2>40 internship domains across tech, career, biotech, and business.</h2>
+              <p>
+                Based on the VeloraSkills PDF structure: 25 Tech domains and
+                15 Non-Tech career domains for engineering, commerce, arts,
+                biotech, pharmacy, and general students.
+              </p>
+            </div>
+            <div className="program-grid">
+              {previewPrograms.map((program) => (
+                <article className="program-card" key={program.title}>
+                  <div>
+                    <div className="program-card__top">
+                      <span className="program-card__icon">{program.icon}</span>
+                      <span className="program-card__category">{program.category}</span>
+                    </div>
+                    {program.featured ? (
+                      <span className="program-card__featured">Top enrollment domain</span>
+                    ) : null}
+                    <h3>{program.title}</h3>
+                    <p>{program.summary}</p>
+                  </div>
+                  <ul>
+                    <li>{program.duration}</li>
+                    <li>{program.skills}</li>
+                    <li>{program.project}</li>
+                  </ul>
+                  <a className="text-link" href="#apply">
+                    Apply for this track
+                  </a>
+                </article>
+              ))}
+            </div>
+            <div className="program-section-actions">
+              <Link className="button button--primary" href="/services">
+                View More
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--muted" id="process">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">Internship process</p>
+              <h2>A clear journey from application to verification.</h2>
+            </div>
+            <ol className="journey">
+              {journeySteps.map((step, index) => (
+                <li key={step.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.copy}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="section" id="dashboard">
+          <div className="container dashboard-layout">
+            <div className="section-heading section-heading--left">
+              <p className="eyebrow">Dashboards</p>
+              <h2>Student workspace designed for daily execution.</h2>
+              <p>
+                Students get a clean cockpit for profile updates, intern ID,
+                offer letters, tasks, progress, payments, certificate downloads,
+                and feedback in one secure portal.
+              </p>
+            </div>
+            <div className="dashboard-preview">
+              {dashboardHighlights
+                .filter((group) => group.title === "Student Dashboard")
+                .map((group) => (
+                  <article key={group.title}>
+                    <h3>{group.title}</h3>
+                    <div className="chip-list">
+                      {group.items.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              <div className="dashboard-actions">
+                <Link className="button button--primary" href="/student/login">
+                  Student Login
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--split" id="verify">
+          <div className="container split-grid">
+            <div>
+              <p className="eyebrow">Certificate verification</p>
+              <h2>Search by Certificate ID, Intern ID, or QR code.</h2>
+              <p>
+                Verification shows student name, selected domain, status, issue
+                date, and certificate validity. The backend route is ready for
+                MySQL powered records.
+              </p>
+            </div>
+            <VerifyForm />
+          </div>
+        </section>
+
+        <section className="section section--muted" id="career-tools">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">AI career tools</p>
+              <h2>Extra support beyond task submission.</h2>
+            </div>
+            <div className="tool-grid">
+              {careerTools.map((tool) => (
+                <article key={tool.title}>
+                  <h3>{tool.title}</h3>
+                  <p>{tool.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="resources">
+          <div className="container resources-layout">
+            <div className="section-heading section-heading--left">
+              <p className="eyebrow">Resources</p>
+              <h2>Everything interns need to finish confidently.</h2>
+            </div>
+            <div className="resource-list">
+              {resources.map((resource) => (
+                <a href={resource.href} key={resource.title}>
+                  <strong>{resource.title}</strong>
+                  <span>{resource.copy}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--dark" id="about">
+          <div className="container about-grid">
+            <div className="about-copy">
+              <p className="eyebrow">About VeloraSkills</p>
+              <h2>Mission led learning for practical tech careers.</h2>
+              <p>
+                VeloraSkills helps students move from tutorials to proof of work
+                through guided internships, mentor feedback, certificate
+                verification, referrals, badges, and career-ready portfolios.
+              </p>
+              <div className="about-mini-stats" aria-label="VeloraSkills strengths">
+                <span>Project-first tracks</span>
+                <span>Verified certificates</span>
+                <span>Career-ready output</span>
+              </div>
+            </div>
+            <div className="about-visual">
+              <div className="about-orbit" aria-hidden="true">
+                <span>Apply</span>
+                <span>Build</span>
+                <span>Verify</span>
+              </div>
+              <div className="values">
+                <article>
+                  <span className="value-icon">01</span>
+                  <h3>Mission</h3>
+                  <p>Make practical project experience accessible to students globally.</p>
+                </article>
+                <article>
+                  <span className="value-icon">02</span>
+                  <h3>Vision</h3>
+                  <p>Build a trusted internship ecosystem for learners and hiring teams.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">Student stories</p>
+              <h2>Designed to feel accountable, supportive, and outcome focused.</h2>
+            </div>
+            <div className="testimonial-grid">
+              {testimonials.map((testimonial) => (
+                <article className="testimonial" key={testimonial.name}>
+                  <p>&quot;{testimonial.quote}&quot;</p>
+                  <strong>{testimonial.name}</strong>
+                  <span>{testimonial.role}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--muted" id="faq">
+          <div className="container faq-layout">
+            <div className="section-heading section-heading--left">
+              <p className="eyebrow">FAQ</p>
+              <h2>Quick answers before students apply.</h2>
+            </div>
+            <div className="faq-list">
+              {faqs.map((faq) => (
+                <details key={faq.question}>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="apply">
+          <div className="container apply-grid">
+            <div>
+              <p className="eyebrow">Apply and contact</p>
+              <h2>Start with your preferred domain.</h2>
+              <p>
+                The form posts to the MySQL-backed application route. Connect
+                environment variables, import the schema, and the backend is
+                ready to store student applications.
+              </p>
+              <div className="contact-list">
+                <a href="mailto:hello@veloraskills.tech">hello@veloraskills.tech</a>
+                <a href="https://wa.me/919999999999">WhatsApp support</a>
+                <a href="#resources">Submission guide</a>
+              </div>
+            </div>
+            <ApplyForm />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
