@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FiArrowRight } from "react-icons/fi";
 import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
 import { blogPosts } from "@/data/site";
@@ -67,7 +68,10 @@ export default function BlogPage() {
                 <div className="blog-card__meta">
                   <span>{post.date}</span>
                   <span>{post.author}</span>
-                  <Link href="/#resources">Read -&gt;</Link>
+                  <Link href="/#resources">
+                    <span>Read</span>
+                    <FiArrowRight aria-hidden="true" />
+                  </Link>
                 </div>
               </article>
             ))}
