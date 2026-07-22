@@ -106,7 +106,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section section--muted" id="process">
+        <section className="section section--muted section--process" id="process">
           <div className="container">
             <div className="section-heading">
               <p className="eyebrow">Internship process</p>
