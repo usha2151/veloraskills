@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FiCheckCircle, FiSearch, FiShield } from "react-icons/fi";
 
 export function VerifyForm() {
   const [query, setQuery] = useState("");
@@ -33,7 +34,14 @@ export function VerifyForm() {
   }
 
   return (
-    <form className="panel form-panel" onSubmit={handleSubmit}>
+    <form className="panel form-panel verify-form" onSubmit={handleSubmit}>
+      <div className="verify-form__header">
+        <FiShield aria-hidden="true" />
+        <div>
+          <strong>Secure verification</strong>
+          <span>Check internship records instantly</span>
+        </div>
+      </div>
       <label htmlFor="verify-query">Certificate ID or Intern ID</label>
       <div className="inline-form">
         <input
@@ -50,10 +58,14 @@ export function VerifyForm() {
           type="submit"
           disabled={status.state === "loading"}
         >
-          {status.state === "loading" ? "Checking..." : "Verify"}
+          <FiSearch aria-hidden="true" />
+          <span>{status.state === "loading" ? "Checking..." : "Verify"}</span>
         </button>
       </div>
-      <p className="form-note">QR certificates can point to this same route.</p>
+      <p className="form-note">
+        <FiCheckCircle aria-hidden="true" />
+        QR certificates can point to this same route.
+      </p>
       {status.message ? (
         <p className={`form-status form-status--${status.state}`}>{status.message}</p>
       ) : null}

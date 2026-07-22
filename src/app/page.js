@@ -157,7 +157,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section section--split" id="verify">
+        <section className="section section--split section--verify-showcase" id="verify">
           <div className="container split-grid">
             <div>
               <p className="eyebrow">Certificate verification</p>
@@ -167,6 +167,11 @@ export default function Home() {
                 date, and certificate validity. The backend route is ready for
                 MySQL powered records.
               </p>
+              <div className="verify-trust-list" aria-label="Verification highlights">
+                <span>QR ready</span>
+                <span>Public validation</span>
+                <span>Instant status</span>
+              </div>
             </div>
             <VerifyForm />
           </div>
