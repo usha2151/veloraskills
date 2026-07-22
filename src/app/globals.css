@@ -654,6 +654,53 @@ textarea {
   font-size: clamp(2.35rem, 5vw, 4.25rem);
 }
 
+.section--faq-showcase {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(102deg, rgba(10, 42, 107, 0.94) 0%, rgba(22, 61, 140, 0.82) 46%, rgba(17, 24, 39, 0.62) 72%, rgba(249, 168, 37, 0.34) 100%),
+    url("/internship-hero.png") center center / cover no-repeat;
+}
+
+.section--faq-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 78px 78px;
+  opacity: 0.2;
+  animation: gridDrift 28s linear infinite;
+}
+
+.section--faq-showcase::after {
+  content: "";
+  position: absolute;
+  inset: auto -140px -180px auto;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 168, 37, 0.38), transparent 68%);
+  filter: blur(4px);
+  animation: dashboardGlow 8s ease-in-out infinite;
+}
+
+.section--faq-showcase .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section--faq-showcase .eyebrow {
+  color: #ffc107;
+}
+
+.section--faq-showcase h2 {
+  color: #ffff !important;
+  text-shadow: 0 14px 34px rgba(3, 14, 38, 0.22);
+}
+
 .section--stats {
   padding: 34px 0;
   background: linear-gradient(120deg, #0a2a6b, #163d8c, #f9a825, #ffc107);
@@ -1321,10 +1368,101 @@ textarea {
   transform: translateY(-2px);
 }
 
+.section--apply-showcase {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(10, 42, 107, 0.08), transparent 34%),
+    linear-gradient(300deg, rgba(249, 168, 37, 0.18), transparent 34%),
+    linear-gradient(135deg, #f8fafc 0%, #ffffff 48%, #fff8e4 100%);
+}
+
+.section--apply-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(10, 42, 107, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 42, 107, 0.045) 1px, transparent 1px);
+  background-size: 82px 82px;
+  opacity: 0.58;
+  animation: gridDrift 28s linear infinite;
+}
+
+.section--apply-showcase::after {
+  content: "";
+  position: absolute;
+  inset: -160px -110px auto auto;
+  width: 470px;
+  height: 470px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 168, 37, 0.24), transparent 68%);
+  filter: blur(4px);
+  animation: dashboardGlow 8s ease-in-out infinite;
+}
+
+.section--apply-showcase .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section--apply-showcase .apply-grid > div:first-child {
+  position: relative;
+}
+
+.section--apply-showcase .apply-grid > div:first-child::after {
+  content: "";
+  position: absolute;
+  left: -28px;
+  bottom: -32px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(10, 42, 107, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.section--apply-showcase .apply-grid > div:first-child > *,
+.section--apply-showcase .form-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
 .form-panel {
   display: grid;
   gap: 12px;
   padding: 28px;
+}
+
+.section--apply-showcase .form-panel {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(10, 42, 107, 0.16);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 255, 0.92)),
+    linear-gradient(135deg, rgba(10, 42, 107, 0.08), rgba(249, 168, 37, 0.16));
+  box-shadow: 0 34px 90px rgba(10, 42, 107, 0.14);
+  backdrop-filter: blur(14px) saturate(1.08);
+}
+
+.section--apply-showcase .form-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #0a2a6b, #163d8c, #f9a825, #ffc107);
+}
+
+.section--apply-showcase .form-panel::after {
+  content: "";
+  position: absolute;
+  inset: auto -80px -90px auto;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 168, 37, 0.16), transparent 68%);
+  pointer-events: none;
 }
 
 .form-panel label {
@@ -2013,14 +2151,29 @@ textarea {
 
 .faq-list {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .faq-list details {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 20px 22px;
-  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  padding: 22px 24px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(246, 250, 255, 0.82)),
+    rgba(255, 255, 255, 0.74);
+  box-shadow: 0 18px 46px rgba(3, 14, 38, 0.22);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 190ms ease,
+    border-color 190ms ease,
+    box-shadow 190ms ease;
+}
+
+.faq-list details:hover,
+.faq-list details[open] {
+  border-color: rgba(249, 168, 37, 0.72);
+  box-shadow: 0 26px 64px rgba(3, 14, 38, 0.28);
+  transform: translateY(-3px);
 }
 
 .faq-list summary {
@@ -2029,9 +2182,13 @@ textarea {
   cursor: pointer;
 }
 
+.faq-list summary::marker {
+  color: #f9a825;
+}
+
 .faq-list p {
   margin-bottom: 0;
-  color: var(--ink-muted);
+  color: #4b5563;
   line-height: 1.7;
 }
 

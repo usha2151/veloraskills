@@ -317,7 +317,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section section--muted" id="faq">
+        <section className="section section--faq-showcase" id="faq">
           <div className="container faq-layout">
             <div className="section-heading section-heading--left">
               <p className="eyebrow">FAQ</p>
@@ -334,7 +334,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" id="apply">
+        <section className="section section--apply-showcase" id="apply">
           <div className="container apply-grid">
             <div>
               <p className="eyebrow">Apply and contact</p>
