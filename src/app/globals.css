@@ -241,12 +241,13 @@ textarea {
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  border: 0;
-  border-radius: 8px;
+  border: 1px solid rgba(10, 42, 107, 0.14);
+  border-radius: 999px;
   padding: 0 22px;
-  color: var(--foreground);
-  background: var(--surface);
+  color: #ffffff;
+  background: #0a2a6b;
   font-weight: 800;
+  box-shadow: 0 12px 28px rgba(10, 42, 107, 0.22);
   cursor: pointer;
   transition:
     color 180ms ease,
@@ -256,6 +257,9 @@ textarea {
 }
 
 .button:hover {
+  color: #ffffff;
+  background: #163d8c;
+  box-shadow: 0 16px 34px rgba(10, 42, 107, 0.28);
   transform: translateY(-1px);
 }
 
@@ -267,21 +271,19 @@ textarea {
 
 .button--primary {
   color: #ffffff;
-  background: linear-gradient(135deg, #f9a825, #ffc107);
-  background-size: 240% 240%;
-  box-shadow: 0 16px 34px rgba(249, 168, 37, 0.25), var(--glow);
-  animation: gradientShift 8s ease infinite;
+  background: #0a2a6b;
+  box-shadow: 0 12px 28px rgba(10, 42, 107, 0.22);
 }
 
 .button--primary:hover {
-  background: #e68a00;
-  box-shadow: 0 20px 42px rgba(230, 138, 0, 0.28);
+  background: #163d8c;
+  box-shadow: 0 16px 34px rgba(10, 42, 107, 0.28);
 }
 
 .button--light {
   color: #ffffff;
   background: #0a2a6b;
-  box-shadow: 0 14px 30px rgba(10, 42, 107, 0.22);
+  box-shadow: 0 12px 28px rgba(10, 42, 107, 0.22);
 }
 
 .button--light:hover {
@@ -1633,8 +1635,27 @@ textarea {
 }
 
 .blog-card__meta a {
-  color: var(--primary);
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(10, 42, 107, 0.14);
+  border-radius: 999px;
+  padding: 0 15px;
+  color: #ffffff;
+  background: #0a2a6b;
   font-weight: 850;
+  box-shadow: 0 10px 22px rgba(10, 42, 107, 0.2);
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.blog-card__meta a:hover {
+  background: #163d8c;
+  box-shadow: 0 14px 28px rgba(10, 42, 107, 0.26);
+  transform: translateY(-1px);
 }
 
 .contact-channel-list {
