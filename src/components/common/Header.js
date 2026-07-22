@@ -1,11 +1,25 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { gsap } from "gsap";
+import {
+  FiBriefcase,
+  FiChevronDown,
+  FiGrid,
+  FiHome,
+  FiInfo,
+  FiLogIn,
+  FiMail,
+  FiPenTool,
+} from "react-icons/fi";
 
 const navItems = [
-  ["About", "/about"],
-  ["Services", "/services"],
-  ["Blog", "/blog"],
-  ["Contact", "/contact"],
+  ["About", "/about", FiInfo],
+  ["Services", "/services", FiGrid],
+  ["Blog", "/blog", FiPenTool],
+  ["Contact", "/contact", FiMail],
 ];
 
 const internshipItems = [
@@ -15,8 +29,26 @@ const internshipItems = [
 ];
 
 export function Header() {
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".site-header__inner > *",
+        { opacity: 0, y: -16 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }
+      );
+    }, headerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className="container site-header__inner">
         <Link className="brand" href="/" aria-label="VeloraSkills home">
           <Image
@@ -29,11 +61,15 @@ export function Header() {
           />
         </Link>
         <nav className="site-nav" aria-label="Primary navigation">
-          <Link href="/">Home</Link>
+          <Link href="/">
+            <FiHome aria-hidden="true" />
+            <span>Home</span>
+          </Link>
           <div className="nav-dropdown">
             <Link className="nav-dropdown__trigger" href="/internships/apply">
+              <FiBriefcase aria-hidden="true" />
               Internships
-              <span aria-hidden="true">v</span>
+              <FiChevronDown aria-hidden="true" />
             </Link>
             <div className="nav-dropdown__menu">
               {internshipItems.map(([label, href]) => (
@@ -43,14 +79,16 @@ export function Header() {
               ))}
             </div>
           </div>
-          {navItems.map(([label, href]) => (
+          {navItems.map(([label, href, Icon]) => (
             <Link href={href} key={label}>
-              {label}
+              <Icon aria-hidden="true" />
+              <span>{label}</span>
             </Link>
           ))}
         </nav>
         <Link className="button button--small" href="/student/login">
-          Student Login
+          <FiLogIn aria-hidden="true" />
+          <span>Student Login</span>
         </Link>
       </div>
     </header>

@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
 import { ApplyForm } from "@/components/forms/ApplyForm";
 import { VerifyForm } from "@/components/forms/VerifyForm";
+import { HomeHero } from "@/components/home/HomeHero";
 import {
   careerTools,
   dashboardHighlights,
@@ -23,60 +23,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <section className="hero" id="home">
-          <div className="hero__media" aria-hidden="true">
-            <Image
-              src="/internship-hero.png"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="hero__image"
-            />
-          </div>
-          <div className="container hero__content">
-            <div className="hero__copy">
-              <p className="eyebrow">Global virtual internships</p>
-              <h1>Build skills on a real tech internship operating system.</h1>
-              <p className="hero__lead">
-                VeloraSkills combines project tracks, admin workflows, AI career
-                tools, certificate verification, and student dashboards into one
-                modern internship platform.
-              </p>
-              <div className="hero__actions">
-                <a className="button button--primary" href="#apply">
-                  Apply Now
-                </a>
-                <a className="button button--light" href="#verify">
-                  Verify Certificate
-                </a>
-              </div>
-              <div className="hero__badges" aria-label="Platform highlights">
-                <span>Next.js platform</span>
-                <span>MySQL backend</span>
-                <span>QR certificates</span>
-              </div>
-            </div>
-            <div className="hero-tech-panel" aria-label="VeloraSkills platform preview">
-              <div className="hero-tech-panel__top">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="code-lines">
-                <span>const intern = assignTrack(&quot;Web Development&quot;);</span>
-                <span>await review.tasks(progress.status);</span>
-                <span>certificate.verify(qrToken, intern.id);</span>
-              </div>
-              <div className="signal-grid">
-                <strong>68%</strong>
-                <span>task progress</span>
-                <strong>48h</strong>
-                <span>mentor review</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HomeHero />
 
         <section className="section section--stats" aria-label="Live platform stats">
           <div className="container stats-grid">
