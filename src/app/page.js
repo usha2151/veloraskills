@@ -75,7 +75,11 @@ export default function Home() {
             </div>
             <div className="program-grid">
               {previewPrograms.map((program) => (
-                <article className="program-card" key={program.title}>
+                <Link
+                  className="program-card program-card--clickable"
+                  href={`/internships/apply?domain=${encodeURIComponent(program.title)}#apply-form`}
+                  key={program.title}
+                >
                   <div>
                     <div className="program-card__top">
                       <span className="program-card__icon">{program.icon}</span>
@@ -87,15 +91,11 @@ export default function Home() {
                     <h3>{program.title}</h3>
                     <p>{program.summary}</p>
                   </div>
-                  <ul>
-                    <li>{program.duration}</li>
-                    <li>{program.skills}</li>
-                    <li>{program.project}</li>
-                  </ul>
-                  <a className="text-link" href="#apply">
-                    Apply for this track
-                  </a>
-                </article>
+                  <div className="program-card__footer">
+                    <span>{program.duration}</span>
+                    <strong>Apply now</strong>
+                  </div>
+                </Link>
               ))}
             </div>
             <div className="program-section-actions">

@@ -8,7 +8,12 @@ export const metadata = {
   description: "Apply for a VeloraSkills internship across 40 tech and non-tech domains.",
 };
 
-export default function ApplyInternshipPage() {
+export default async function ApplyInternshipPage({ searchParams }) {
+  const params = await searchParams;
+  const selectedDomain =
+    typeof params?.domain === "string" && programs.some((program) => program.title === params.domain)
+      ? params.domain
+      : "";
   const featuredPrograms = programs.filter((program) => program.featured).slice(0, 10);
 
   return (
@@ -27,7 +32,7 @@ export default function ApplyInternshipPage() {
           </div>
         </section>
 
-        <section className="section">
+        <section className="section" id="apply-form">
           <div className="container apply-grid">
             <div>
               <p className="eyebrow">Top enrollment domains</p>
@@ -38,7 +43,7 @@ export default function ApplyInternshipPage() {
                 ))}
               </div>
             </div>
-            <ApplyForm />
+            <ApplyForm initialDomain={selectedDomain} />
           </div>
         </section>
       </main>

@@ -11,8 +11,8 @@ const initialForm = {
   portfolio: "",
 };
 
-export function ApplyForm() {
-  const [form, setForm] = useState(initialForm);
+export function ApplyForm({ initialDomain = "" }) {
+  const [form, setForm] = useState({ ...initialForm, domain: initialDomain });
   const [status, setStatus] = useState({ state: "idle", message: "" });
 
   async function handleSubmit(event) {
