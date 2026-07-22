@@ -7,6 +7,7 @@ import {
   FiMap,
   FiMessageCircle,
   FiPenTool,
+  FiStar,
   FiUploadCloud,
   FiTarget,
 } from "react-icons/fi";
@@ -282,20 +283,36 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section">
+        <section className="section section--stories-showcase">
           <div className="container">
             <div className="section-heading">
               <p className="eyebrow">Student stories</p>
               <h2>Designed to feel accountable, supportive, and outcome focused.</h2>
             </div>
             <div className="testimonial-grid">
-              {testimonials.map((testimonial) => (
-                <article className="testimonial" key={testimonial.name}>
-                  <p>&quot;{testimonial.quote}&quot;</p>
-                  <strong>{testimonial.name}</strong>
-                  <span>{testimonial.role}</span>
-                </article>
-              ))}
+              {testimonials.map((testimonial) => {
+                const initials = testimonial.name
+                  .split(" ")
+                  .map((part) => part[0])
+                  .join("");
+
+                return (
+                  <article className="testimonial" key={testimonial.name}>
+                    <div className="testimonial__top">
+                      <span className="testimonial__avatar">{initials}</span>
+                      <span className="testimonial__badge">
+                        <FiStar aria-hidden="true" />
+                        Verified
+                      </span>
+                    </div>
+                    <p>&quot;{testimonial.quote}&quot;</p>
+                    <div className="testimonial__person">
+                      <strong>{testimonial.name}</strong>
+                      <span>{testimonial.role}</span>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
