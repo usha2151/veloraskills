@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FiFileText, FiLayout, FiMap, FiMessageCircle, FiTarget } from "react-icons/fi";
 import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
 import { ApplyForm } from "@/components/forms/ApplyForm";
@@ -18,6 +19,7 @@ import {
 
 export default function Home() {
   const previewPrograms = programs.slice(0, 6);
+  const careerToolIcons = [FiFileText, FiTarget, FiMessageCircle, FiMap, FiLayout];
 
   return (
     <>
@@ -177,19 +179,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section section--muted" id="career-tools">
+        <section className="section section--muted section--career-showcase" id="career-tools">
           <div className="container">
             <div className="section-heading">
               <p className="eyebrow">AI career tools</p>
               <h2>Extra support beyond task submission.</h2>
             </div>
             <div className="tool-grid">
-              {careerTools.map((tool) => (
-                <article key={tool.title}>
+              {careerTools.map((tool, index) => {
+                const Icon = careerToolIcons[index % careerToolIcons.length];
+
+                return (
+                <article className="career-tool-card" key={tool.title}>
+                  <span className="career-tool-card__icon">
+                    <Icon aria-hidden="true" />
+                  </span>
                   <h3>{tool.title}</h3>
                   <p>{tool.copy}</p>
+                  <span className="career-tool-card__link">Explore tool</span>
                 </article>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
