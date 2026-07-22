@@ -1,5 +1,15 @@
 import Link from "next/link";
-import { FiFileText, FiLayout, FiMap, FiMessageCircle, FiTarget } from "react-icons/fi";
+import {
+  FiBookOpen,
+  FiFileText,
+  FiGithub,
+  FiLayout,
+  FiMap,
+  FiMessageCircle,
+  FiPenTool,
+  FiUploadCloud,
+  FiTarget,
+} from "react-icons/fi";
 import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
 import { ApplyForm } from "@/components/forms/ApplyForm";
@@ -20,6 +30,7 @@ import {
 export default function Home() {
   const previewPrograms = programs.slice(0, 6);
   const careerToolIcons = [FiFileText, FiTarget, FiMessageCircle, FiMap, FiLayout];
+  const resourceIcons = [FiBookOpen, FiGithub, FiUploadCloud, FiPenTool];
 
   return (
     <>
@@ -204,19 +215,31 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section" id="resources">
+        <section className="section section--resources-showcase" id="resources">
           <div className="container resources-layout">
             <div className="section-heading section-heading--left">
               <p className="eyebrow">Resources</p>
               <h2>Everything interns need to finish confidently.</h2>
+              <p>
+                Starter guides, submission workflows, and career notes arranged
+                for faster execution.
+              </p>
             </div>
             <div className="resource-list">
-              {resources.map((resource) => (
-                <a href={resource.href} key={resource.title}>
-                  <strong>{resource.title}</strong>
-                  <span>{resource.copy}</span>
-                </a>
-              ))}
+              {resources.map((resource, index) => {
+                const Icon = resourceIcons[index % resourceIcons.length];
+
+                return (
+                  <a href={resource.href} key={resource.title}>
+                    <span className="resource-list__icon">
+                      <Icon aria-hidden="true" />
+                    </span>
+                    <strong>{resource.title}</strong>
+                    <span>{resource.copy}</span>
+                    <em>Open resource</em>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </section>
